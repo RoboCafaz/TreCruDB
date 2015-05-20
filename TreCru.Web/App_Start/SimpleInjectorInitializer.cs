@@ -1,39 +1,60 @@
-[assembly: WebActivator.PostApplicationStartMethod(typeof(TreCru.Web.App_Start.SimpleInjectorInitializer), "Initialize")]
+using System.Linq;
+using System.Reflection;
+using System.Web.Mvc;
+using SimpleInjector;
+using SimpleInjector.Integration.Web.Mvc;
+using TreCru.Web.App_Start;
+using TreCru.Web.Entity;
+using TreCru.Web.Services;
+using TreCru.Web.Services.Interfaces;
+using WebActivator;
+
+[assembly: PostApplicationStartMethod(typeof(SimpleInjectorInitializer), "Initialize")]
 
 namespace TreCru.Web.App_Start
 {
-    using System.Reflection;
-    using System.Web.Mvc;
-
-    using SimpleInjector;
-    using SimpleInjector.Extensions;
-    using SimpleInjector.Integration.Web;
-    using SimpleInjector.Integration.Web.Mvc;
-    
     public static class SimpleInjectorInitializer
     {
-        /// <summary>Initialize the container and register it as MVC3 Dependency Resolver.</summary>
         public static void Initialize()
         {
-            // Did you know the container can diagnose your configuration? 
-            // Go to: https://simpleinjector.org/diagnostics
             var container = new Container();
-            
-            InitializeContainer(container);
+
+            RegisterEntities(container);
+            RegisterServices(container);
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
-            
+
             container.Verify();
-            
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
-     
-        private static void InitializeContainer(Container container)
-        {
-#error Register your services here (remove this line).
 
-            // For instance:
-            // container.Register<IUserRepository, SqlUserRepository>();
+        private static void RegisterEntities(Container container)
+        {
+            container.RegisterPerWebRequest<TreasureCruiseEntities>();
+
+            var contextName = typeof(TreasureCruiseEntities).Name;
+
+            var entities =
+                Assembly.GetExecutingAssembly()
+                    .DefinedTypes.Where(
+                        x => x.Namespace == typeof(TreasureCruiseEntities).Namespace && x.Name != contextName);
+
+            var repoInterface = typeof(IRepository<>);
+            var repoClass = typeof(Repository<,>);
+
+            foreach (var entity in entities)
+            {
+                var genericInterface = repoInterface.MakeGenericType(entity);
+                var genericClass = repoClass.MakeGenericType(typeof(TreasureCruiseEntities), entity);
+
+                container.Register(genericInterface, genericClass, Lifestyle.Singleton);
+            }
+        }
+
+        private static void RegisterServices(Container container)
+        {
+            // ...
         }
     }
 }
