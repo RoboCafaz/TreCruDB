@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0da440cf2546421497f2338ab2319bd2" Name="Diagram1">
+        <EntityTypeShape EntityType="TreasureCruiseModel.Ability" Width="1.5" PointX="0.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Character" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Class" Width="1.5" PointX="5.125" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Special" Width="1.5" PointX="5.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Type" Width="1.5" PointX="0.875" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToAbility" ManuallyRouted="false" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToClass" ManuallyRouted="false" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToSpecial" ManuallyRouted="false" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

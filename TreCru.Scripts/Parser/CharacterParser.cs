@@ -26,6 +26,7 @@ namespace TreCru.Scripts.Parser
             int bHp, bAtk, bRcv, mHp, mAtk, mRcv;
             string specName, specDesc;
             string capName, capDesc;
+            var global = true;
 
             name = document.DocumentNode.Descendants("h1")
                 .Where(x => x.Attributes.Contains("class") && x.Attributes["class"].Value.Equals("monster_name"))
