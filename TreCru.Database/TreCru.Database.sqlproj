@@ -60,6 +60,7 @@
     <Folder Include="Properties" />
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
+    <Folder Include="data" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Character.sql" />
@@ -73,5 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="TreCru.Database.publish.xml" />
+    <None Include="data\CharacterData.sql" />
+    <None Include="data\TypeData.sql" />
+    <None Include="data\ClassData.sql" />
+    <None Include="data\AbilityData.sql" />
+    <None Include="data\SpecialData.sql" />
   </ItemGroup>
 </Project>
