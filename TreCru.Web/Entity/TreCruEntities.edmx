@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TreasureCruiseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TreasureCruiseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ability">
           <Key>
             <PropertyRef Name="Id" />
@@ -27,12 +27,12 @@
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="MaxLevel" Type="int" Nullable="false" />
           <Property Name="MaxExp" Type="int" Nullable="false" />
-          <Property Name="minHP" Type="int" Nullable="false" />
-          <Property Name="maxHp" Type="int" Nullable="false" />
-          <Property Name="minAtk" Type="int" Nullable="false" />
-          <Property Name="maxAtk" Type="int" Nullable="false" />
-          <Property Name="minRcv" Type="int" Nullable="false" />
-          <Property Name="maxRcv" Type="int" Nullable="false" />
+          <Property Name="MinHp" Type="int" Nullable="false" />
+          <Property Name="MaxHp" Type="int" Nullable="false" />
+          <Property Name="MinAtk" Type="int" Nullable="false" />
+          <Property Name="MaxAtk" Type="int" Nullable="false" />
+          <Property Name="MinRcv" Type="int" Nullable="false" />
+          <Property Name="MaxRcv" Type="int" Nullable="false" />
           <Property Name="Special" Type="int" />
           <Property Name="Ability" Type="int" />
           <Property Name="Global" Type="bit" Nullable="false" />
@@ -130,27 +130,48 @@
             <End Role="Character" EntitySet="Character" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TreasureCruiseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TreasureCruiseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abilities" EntityType="TreasureCruiseModel.Ability" />
+          <EntitySet Name="Characters" EntityType="TreasureCruiseModel.Character" />
+          <EntitySet Name="Classes" EntityType="TreasureCruiseModel.Class" />
+          <EntitySet Name="Specials" EntityType="TreasureCruiseModel.Special" />
+          <EntitySet Name="Types" EntityType="TreasureCruiseModel.Type" />
+          <AssociationSet Name="FK_Character_ToAbility" Association="TreasureCruiseModel.FK_Character_ToAbility">
+            <End Role="Ability" EntitySet="Abilities" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_ToClass" Association="TreasureCruiseModel.FK_Character_ToClass">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_ToSpecial" Association="TreasureCruiseModel.FK_Character_ToSpecial">
+            <End Role="Special" EntitySet="Specials" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_ToType" Association="TreasureCruiseModel.FK_Character_ToType">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Ability">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Characters" Relationship="Self.FK_Character_ToAbility" FromRole="Ability" ToRole="Character" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Character">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Class" Type="Int32" Nullable="false" />
           <Property Name="Rarity" Type="Int32" Nullable="false" />
@@ -158,12 +179,12 @@
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="MaxLevel" Type="Int32" Nullable="false" />
           <Property Name="MaxExp" Type="Int32" Nullable="false" />
-          <Property Name="minHP" Type="Int32" Nullable="false" />
-          <Property Name="maxHp" Type="Int32" Nullable="false" />
-          <Property Name="minAtk" Type="Int32" Nullable="false" />
-          <Property Name="maxAtk" Type="Int32" Nullable="false" />
-          <Property Name="minRcv" Type="Int32" Nullable="false" />
-          <Property Name="maxRcv" Type="Int32" Nullable="false" />
+          <Property Name="MinHp" Type="Int32" Nullable="false" />
+          <Property Name="MaxHp" Type="Int32" Nullable="false" />
+          <Property Name="MinAtk" Type="Int32" Nullable="false" />
+          <Property Name="MaxAtk" Type="Int32" Nullable="false" />
+          <Property Name="MinRcv" Type="Int32" Nullable="false" />
+          <Property Name="MaxRcv" Type="Int32" Nullable="false" />
           <Property Name="Special" Type="Int32" />
           <Property Name="Ability" Type="Int32" />
           <Property Name="Global" Type="Boolean" Nullable="false" />
@@ -173,29 +194,26 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Characters" Relationship="Self.FK_Character_ToClass" FromRole="Class" ToRole="Character" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Special">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Characters" Relationship="Self.FK_Character_ToSpecial" FromRole="Special" ToRole="Character" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Characters" Relationship="Self.FK_Character_ToType" FromRole="Type" ToRole="Character" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Character_ToAbility">
-          <End Role="Ability" Type="Self.Ability" Multiplicity="0..1" />
-          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <End Type="TreasureCruiseModel.Ability" Role="Ability" Multiplicity="0..1" />
+          <End Type="TreasureCruiseModel.Character" Role="Character" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ability">
               <PropertyRef Name="Id" />
@@ -206,8 +224,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Character_ToClass">
-          <End Role="Class" Type="Self.Class" Multiplicity="1" />
-          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <End Type="TreasureCruiseModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="TreasureCruiseModel.Character" Role="Character" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Class">
               <PropertyRef Name="Id" />
@@ -218,8 +236,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Character_ToSpecial">
-          <End Role="Special" Type="Self.Special" Multiplicity="0..1" />
-          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <End Type="TreasureCruiseModel.Special" Role="Special" Multiplicity="0..1" />
+          <End Type="TreasureCruiseModel.Character" Role="Character" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Special">
               <PropertyRef Name="Id" />
@@ -230,8 +248,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Character_ToType">
-          <End Role="Type" Type="Self.Type" Multiplicity="1" />
-          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <End Type="TreasureCruiseModel.Type" Role="Type" Multiplicity="1" />
+          <End Type="TreasureCruiseModel.Character" Role="Character" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="Id" />
@@ -241,30 +259,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TreasureCruiseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Abilities" EntityType="Self.Ability" />
-          <EntitySet Name="Characters" EntityType="Self.Character" />
-          <EntitySet Name="Classes" EntityType="Self.Class" />
-          <EntitySet Name="Specials" EntityType="Self.Special" />
-          <EntitySet Name="Types" EntityType="Self.Type" />
-          <AssociationSet Name="FK_Character_ToAbility" Association="Self.FK_Character_ToAbility">
-            <End Role="Ability" EntitySet="Abilities" />
-            <End Role="Character" EntitySet="Characters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Character_ToClass" Association="Self.FK_Character_ToClass">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="Character" EntitySet="Characters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Character_ToSpecial" Association="Self.FK_Character_ToSpecial">
-            <End Role="Special" EntitySet="Specials" />
-            <End Role="Character" EntitySet="Characters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Character_ToType" Association="Self.FK_Character_ToType">
-            <End Role="Type" EntitySet="Types" />
-            <End Role="Character" EntitySet="Characters" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -273,59 +268,59 @@
           <EntitySetMapping Name="Abilities">
             <EntityTypeMapping TypeName="TreasureCruiseModel.Ability">
               <MappingFragment StoreEntitySet="Ability">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Characters">
             <EntityTypeMapping TypeName="TreasureCruiseModel.Character">
               <MappingFragment StoreEntitySet="Character">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Class" ColumnName="Class" />
-                <ScalarProperty Name="Rarity" ColumnName="Rarity" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="MaxLevel" ColumnName="MaxLevel" />
-                <ScalarProperty Name="MaxExp" ColumnName="MaxExp" />
-                <ScalarProperty Name="minHP" ColumnName="minHP" />
-                <ScalarProperty Name="maxHp" ColumnName="maxHp" />
-                <ScalarProperty Name="minAtk" ColumnName="minAtk" />
-                <ScalarProperty Name="maxAtk" ColumnName="maxAtk" />
-                <ScalarProperty Name="minRcv" ColumnName="minRcv" />
-                <ScalarProperty Name="maxRcv" ColumnName="maxRcv" />
-                <ScalarProperty Name="Special" ColumnName="Special" />
-                <ScalarProperty Name="Ability" ColumnName="Ability" />
                 <ScalarProperty Name="Global" ColumnName="Global" />
+                <ScalarProperty Name="Ability" ColumnName="Ability" />
+                <ScalarProperty Name="Special" ColumnName="Special" />
+                <ScalarProperty Name="MaxRcv" ColumnName="MaxRcv" />
+                <ScalarProperty Name="MinRcv" ColumnName="MinRcv" />
+                <ScalarProperty Name="MaxAtk" ColumnName="MaxAtk" />
+                <ScalarProperty Name="MinAtk" ColumnName="MinAtk" />
+                <ScalarProperty Name="MaxHp" ColumnName="MaxHp" />
+                <ScalarProperty Name="MinHp" ColumnName="MinHp" />
+                <ScalarProperty Name="MaxExp" ColumnName="MaxExp" />
+                <ScalarProperty Name="MaxLevel" ColumnName="MaxLevel" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Rarity" ColumnName="Rarity" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Classes">
             <EntityTypeMapping TypeName="TreasureCruiseModel.Class">
               <MappingFragment StoreEntitySet="Class">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Specials">
             <EntityTypeMapping TypeName="TreasureCruiseModel.Special">
               <MappingFragment StoreEntitySet="Special">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Types">
             <EntityTypeMapping TypeName="TreasureCruiseModel.Type">
               <MappingFragment StoreEntitySet="Type">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -24,12 +24,12 @@ namespace TreCru.Web.Entity
         public int Price { get; set; }
         public int MaxLevel { get; set; }
         public int MaxExp { get; set; }
-        public int minHP { get; set; }
-        public int maxHp { get; set; }
-        public int minAtk { get; set; }
-        public int maxAtk { get; set; }
-        public int minRcv { get; set; }
-        public int maxRcv { get; set; }
+        public int MinHp { get; set; }
+        public int MaxHp { get; set; }
+        public int MinAtk { get; set; }
+        public int MaxAtk { get; set; }
+        public int MinRcv { get; set; }
+        public int MaxRcv { get; set; }
         public Nullable<int> Special { get; set; }
         public Nullable<int> Ability { get; set; }
         public bool Global { get; set; }

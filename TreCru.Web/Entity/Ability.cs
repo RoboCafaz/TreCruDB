@@ -14,15 +14,8 @@ namespace TreCru.Web.Entity
     
     public partial class Ability
     {
-        public Ability()
-        {
-            this.Characters = new HashSet<Character>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
-    
-        public virtual ICollection<Character> Characters { get; set; }
     }
 }

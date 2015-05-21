@@ -14,14 +14,7 @@ namespace TreCru.Web.Entity
     
     public partial class Class
     {
-        public Class()
-        {
-            this.Characters = new HashSet<Character>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-    
-        public virtual ICollection<Character> Characters { get; set; }
     }
 }

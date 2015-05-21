@@ -14,4 +14,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="maxHp" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6d6a60d4-bd67-4a59-95dc-4afe5b635ab2" ChangeDateTime="05/20/2015 23:41:49">
+    <Property Name="ElementName" Value="[dbo].[Character].[minHP]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Character]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MinHP" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b5187be1-37c9-42d1-be47-e493f4618b9d" ChangeDateTime="05/20/2015 23:41:52">
+    <Property Name="ElementName" Value="[dbo].[Character].[maxHp]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Character]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MaxHp" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="db6e36df-7f1f-4a1c-a13f-aba57d0c8d8c" ChangeDateTime="05/20/2015 23:41:53">
+    <Property Name="ElementName" Value="[dbo].[Character].[minAtk]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Character]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MinAtk" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="15d57c44-3255-4e96-86ca-cfa2948a8cf2" ChangeDateTime="05/20/2015 23:41:55">
+    <Property Name="ElementName" Value="[dbo].[Character].[maxAtk]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Character]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MaxAtk" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a2690761-3137-4a80-8928-1c07a01cdde4" ChangeDateTime="05/20/2015 23:41:56">
+    <Property Name="ElementName" Value="[dbo].[Character].[minRcv]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Character]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MinRcv" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8bd6bcfe-856a-46cd-87a7-cb5c3efba890" ChangeDateTime="05/20/2015 23:41:57">
+    <Property Name="ElementName" Value="[dbo].[Character].[maxRcv]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Character]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MaxRcv" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="36a9e0b3-9c6e-4058-aec7-a40fed556a4f" ChangeDateTime="05/20/2015 23:42:05">
+    <Property Name="ElementName" Value="[dbo].[Character].[MinHP]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Character]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MinHp" />
+  </Operation>
 </Operations>

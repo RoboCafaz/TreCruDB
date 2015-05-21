@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0da440cf2546421497f2338ab2319bd2" Name="Diagram1">
-        <EntityTypeShape EntityType="TreasureCruiseModel.Ability" Width="1.5" PointX="0.875" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="TreasureCruiseModel.Character" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TreasureCruiseModel.Class" Width="1.5" PointX="5.125" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="TreasureCruiseModel.Special" Width="1.5" PointX="5.125" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="TreasureCruiseModel.Type" Width="1.5" PointX="0.875" PointY="2" IsExpanded="true" />
-        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToAbility" ManuallyRouted="false" />
-        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToClass" ManuallyRouted="false" />
-        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToSpecial" ManuallyRouted="false" />
-        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Ability" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Character" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Class" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Special" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="TreasureCruiseModel.Type" Width="1.5" PointX="0.75" PointY="11.25" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToAbility" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToClass" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToSpecial" />
+        <AssociationConnector Association="TreasureCruiseModel.FK_Character_ToType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

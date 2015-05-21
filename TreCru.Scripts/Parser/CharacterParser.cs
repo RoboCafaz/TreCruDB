@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using HtmlAgilityPack;
+using TreCru.Web.Entity;
 
 namespace TreCru.Scripts.Parser
 {
-    public class CharacterParser : Parser<string>
+    public class CharacterParser : Parser<Character>
     {
         private static readonly Regex REGEX_EXTRACT_ID = new Regex(@"No\.\d+");
         private static readonly Regex REGEX_EXTRACT_NUMBER = new Regex(@"\d+");
@@ -18,7 +16,7 @@ namespace TreCru.Scripts.Parser
         {
         }
 
-        protected override string Parse(HtmlDocument document)
+        protected override Character Parse(HtmlDocument document)
         {
             int id;
             string name, imgUrl, desc;
@@ -88,16 +86,30 @@ namespace TreCru.Scripts.Parser
 
             var evoTable = tables[5];
 
-            var str = String.Join("|", id, name, desc, type, clazz, rarity, cost, combo, price, level, exp, bHp, bAtk, bRcv, mHp, mAtk, mRcv, specName, specDesc, capName, capDesc);
+            var character = new Character
+            {
+                Id = id,
+                Name = name,
+                Class = clazz,
+                Cost = cost,
+                Desc = desc,
+                MaxAtk = mAtk,
+                MaxExp = exp,
+                MaxLevel = level,
+                Price = price,
+                Rarity = rarity,
+                Type = type,
+                MaxHp = mHp,
+                MaxRcv = mRcv,
+                MinAtk = bAtk,
+                MinHp = bHp,
+                MinRcv = bRcv,
+                Ability = 0,
+                Special = 0,
+                Global = true
+            };
 
-            //int[] evo;
-            //int[][] evoMats;
-
-            //string[] tandemNames;
-            //string[] tandemDescs;
-            //int[][] tandemOrders;
-
-            return str;
+            return character;
         }
     }
 }
